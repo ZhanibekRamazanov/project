@@ -5,12 +5,13 @@ using System.Threading.Tasks;
 
 namespace API.DTOs
 {
-    public class PhotoDto
+    public class PhoneNumberDto
     {
         public int Id { get; set; }
 
-        public string Url { get; set; }
+        public string Number { get; set; }
 
         public bool IsMain { get; set; }
+        
     }
 }

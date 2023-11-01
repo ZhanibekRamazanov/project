@@ -1,21 +1,18 @@
-import { Photo } from "./photo";
+
+import { Address } from "./address";
+import { phoneNumber } from "./phone";
 
 
 
 export interface Member {
     id: number;
     userName: string;
-    photoUrl: string;
-    age: number;
-    knownAs: string;
-    created: Date;
-    lastActive: Date;
-    gender: string;
-    lookingFor: string;
-    introduction: string;
-    interests: string;
-    city: string;
-    country: string;
-    photos: Photo[];
+    email: string;
+    dateOfBirth: string;
+    addressStreet: string;
+    phoneNumberNumber: string;
+    PhoneNumbers: phoneNumber[];
+    Addresses: Address[];
+
   }
   

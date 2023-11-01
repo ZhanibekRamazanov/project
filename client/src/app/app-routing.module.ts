@@ -2,13 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { MemberListComponent } from './members/member-list/member-list.component';
-import { MembersDetailComponent } from './members/members-detail/members-detail.component';
-import { ListsComponent } from './lists/lists.component';
+import { ListsComponent } from './nav/nav.component';
 import { MessagesComponent } from './messages/messages.component';
 import { authGuard } from './_guards/auth.guard';
 import { TestErrorComponent } from './errors/test-error/test-error.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
+import { MemberEditComponent } from './members/member-edit/member-edit.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -17,9 +17,11 @@ const routes: Routes = [
   canActivate: [authGuard],
   children: [
     {path: 'members', component: MemberListComponent},
-    {path: 'members/:username', component: MembersDetailComponent},
     {path: 'lists', component: ListsComponent},
     {path: 'messages', component: MessagesComponent},
+    {path: 'members/:username', component: MemberEditComponent},
+    
+
 
   ]
 },
@@ -27,7 +29,9 @@ const routes: Routes = [
  {path: 'not-found', component: NotFoundComponent},
  {path: 'server-error', component: ServerErrorComponent},
 
+
   {path: '**', component: NotFoundComponent, pathMatch: 'full'},
+  
 ];
 
 @NgModule({

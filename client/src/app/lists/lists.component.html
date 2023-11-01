@@ -1,1 +1,39 @@
-<p>lists works!</p>
+
+
+<form action="" method="post" #form ="ngForm" (ngSubmit)="addMember()">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">UserName</label>
+      <input type="text" class="form-control" id="userName" name="userName" [(ngModel)] = addMemberRequest.userName >
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">DateOfBirth</label>
+        <input type="text" class="form-control" id = "dateOfBirth" name="dateOfBirth" [(ngModel)] = addMemberRequest.dateOfBirth  >
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="email" name="email" [(ngModel)] = addMemberRequest.email  >
+      </div>
+
+
+
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Phone Numbers</label>
+        <div *ngFor="let phone of addMemberRequest.PhoneNumbers; let i = index">
+          <input type="text" class="form-control" name="phoneNumbers[i].number" [(ngModel)]="phone.number">
+          <input type="checkbox" name="phoneNumbers[i].isMain" [checked]="phone.isMain" (change)="PhonetoggleIsMain(phone)"> IsMain
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary" (click)="addPhoneNumber()">Add Phone Number</button>
+    
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Addresses</label>
+        <div *ngFor="let address of addMemberRequest.Addresses; let i = index">
+          <input type="text" class="form-control" name="addresses[i].street" [(ngModel)]="address.street">
+          <input type="checkbox" name="addresses[i].isMain" [checked]="address.isMain" (change)="AddresstoggleIsMain(address)"> IsMain
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary" (click)="addAddress()">Add Address</button>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+  

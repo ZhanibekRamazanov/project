@@ -1,0 +1,32 @@
+<div>
+  <form action=""  #form ="ngForm" (ngSubmit)="updateMember()">
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Id</label>
+        <input type="text" class="form-control" id="id" name="id" readonly [(ngModel)] = memberDetails.id >
+      </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">UserName</label>
+      <input type="text" class="form-control" id="userName" name="userName" [(ngModel)] = memberDetails.userName >
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">DateOfBirth</label>
+        <input type="text" class="form-control" id = "dateOfBirth" name="dateOfBirth" [(ngModel)] = memberDetails.dateOfBirth  >
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="email" name="email" [(ngModel)] = memberDetails.email  >
+      </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">PhoneNumber</label>
+      <input type="text" class="form-control" id="phoneNumberNumber" name="phoneNumberNumber" [(ngModel)] = "memberDetails.phoneNumberNumber"  >
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Address</label>
+        <input type="text" placeholder="{{memberDetails.Addresses}}"  class="form-control" id="addressStreet" name="addressStreet" [(ngModel)] = "memberDetails.addressStreet" >
+      </div>
+    <button type="submit" class="btn btn-primary" mr-5>Submit</button>
+    <button type="button" class="btn btn-danger" (click)="deleteMember(memberDetails.id)">Delete</button>
+  </form>
+
+</div>
+

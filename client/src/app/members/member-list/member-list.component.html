@@ -1,5 +1,44 @@
-<div class="row">
-    <div class="col-2" *ngFor="let member of members">
-        <app-member-card [member]="member"></app-member-card>
-    </div>
-</div>
+
+
+
+
+
+<table *ngIf="members">
+    <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>dateOfBirth</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+        <th>Address</th>
+        <th>Action</th>
+    </tr>
+    <tr *ngFor="let member of members">
+        <td>{{member.id}}</td>
+        <td>{{member.userName}}</td>
+        <td>{{member.dateOfBirth}}</td>
+        <td>{{member.email}}</td>
+        <td>{{member.phoneNumberNumber}}</td>
+        <td>{{member.addressStreet}}</td>
+        <td>
+            <button class="btn btn-success mx-2" routerLink="/members/{{member.id}}">View</button>
+        </td>
+    </tr>
+     
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

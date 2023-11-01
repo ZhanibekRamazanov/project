@@ -4,7 +4,10 @@ using API.DTOs;
 using API.Entities;
 using API.Interfaces;
 using AutoMapper;
+using AutoMapper.Execution;
 using AutoMapper.QueryableExtensions;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Data
@@ -20,10 +23,10 @@ namespace API.Data
             
         }
 
-        public async Task<MemberDto> GetMemberAsync(string username)
+        public async Task<MemberDto> GetMemberAsync(int id)
         {
             return await _context.Users
-            .Where(x => x.UserName == username)
+            .Where(x => x.Id == id)
             .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
             .SingleOrDefaultAsync();
         }
@@ -35,22 +38,21 @@ namespace API.Data
             .ToListAsync();
         }
 
-        public async Task<AppUser> GetUserByIdAsync(int id)
-        {
-            return await _context.Users.FindAsync(id);
-        }
+
 
         public async Task<AppUser> GetUserByUsernameAsync(string username)
         {
             return await _context.Users
-            .Include(p => p.Photos)
+            .Include(p => p.Addresses)
+            .Include(p => p.PhoneNumbers)
             .SingleOrDefaultAsync(x => x.UserName == username);
         }
 
         public async Task<IEnumerable<AppUser>> GetUsersAsync()
         {
             return await _context.Users
-            .Include(p => p.Photos)
+            .Include(p => p.Addresses)
+            .Include(p => p.PhoneNumbers)
             .ToListAsync();
         }
 
@@ -63,5 +65,10 @@ namespace API.Data
         {
             _context.Entry(user).State = EntityState.Modified;
         }
-    }
+
+
+
+
+    
+}
 }

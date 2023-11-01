@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { User } from '../_models/user';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { ListsComponent } from '../lists/lists.component';
 
 @Component({
   selector: 'app-nav',
@@ -34,3 +35,5 @@ export class NavComponent implements OnInit {
   }
 
 }
+export { ListsComponent };
+
